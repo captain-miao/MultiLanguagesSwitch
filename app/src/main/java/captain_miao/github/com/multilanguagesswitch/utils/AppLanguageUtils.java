@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
+import android.os.LocaleList;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 
@@ -99,6 +100,7 @@ public class AppLanguageUtils {
 
    		Configuration configuration = resources.getConfiguration();
    		configuration.setLocale(locale);
+   		configuration.setLocales(new LocaleList(locale));
    		return context.createConfigurationContext(configuration);
    	}
 }
