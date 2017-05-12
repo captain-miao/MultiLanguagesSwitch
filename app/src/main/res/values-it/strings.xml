@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_setting_customize">personalizza</string>
+    <string name="pref_language_label">linguaggio</string>
+    <string name="dialog_cancel">cancella</string>
+</resources>

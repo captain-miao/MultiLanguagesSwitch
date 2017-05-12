@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="pref_key_application"
+        android:title="@string/pref_setting_customize">
+
+        <ListPreference
+            android:defaultValue="en"
+            android:dialogTitle="@string/pref_language_label"
+            android:entries="@array/pref_language_titles"
+            android:entryValues="@array/pref_language_values"
+            android:key="@string/app_language_pref_key"
+            android:negativeButtonText="@string/dialog_cancel"
+            android:summary=""
+            android:title="@string/pref_language_label"
+        />
+    </PreferenceCategory>
+
+</PreferenceScreen>

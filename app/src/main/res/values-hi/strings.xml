@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_setting_customize">रुचि के अनुसार सेटिंग</string>
+    <string name="pref_language_label">भाषा</string>
+    <string name="dialog_cancel">रद्द</string>
+</resources>

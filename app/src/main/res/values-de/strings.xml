@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_setting_customize">Personalisierte Einstellungen</string>
+    <string name="pref_language_label">Sprachen</string>
+    <string name="dialog_cancel">Ausfallen</string>
+</resources>
