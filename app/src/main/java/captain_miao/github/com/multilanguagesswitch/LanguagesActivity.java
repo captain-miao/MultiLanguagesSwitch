@@ -89,6 +89,7 @@ public class LanguagesActivity extends AppCompatActivity {
 
         private void onChangeAppLanguage(String newLanguage) {
             AppLanguageUtils.changeAppLanguage(getActivity(), newLanguage);
+            AppLanguageUtils.changeAppLanguage(App.getContext(), newLanguage);
             getActivity().recreate();
         }
     }

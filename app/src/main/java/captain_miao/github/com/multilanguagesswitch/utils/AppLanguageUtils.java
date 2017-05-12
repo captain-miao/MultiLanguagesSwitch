@@ -31,24 +31,22 @@ public class AppLanguageUtils {
     }};
 
     @SuppressWarnings("deprecation")
-    public static void changeAppLanguage(Context context, String newLanguage){
-        //if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-            Resources resources = context.getResources();
-            Configuration configuration = resources.getConfiguration();
+    public static void changeAppLanguage(Context context, String newLanguage) {
+        Resources resources = context.getResources();
+        Configuration configuration = resources.getConfiguration();
 
-            // app locale
-            Locale locale = getLocaleByLanguage(newLanguage);
+        // app locale
+        Locale locale = getLocaleByLanguage(newLanguage);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                configuration.setLocale(locale);
-            } else {
-                configuration.locale = locale;
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            configuration.setLocale(locale);
+        } else {
+            configuration.locale = locale;
+        }
 
-            // updateConfiguration
-            DisplayMetrics dm = resources.getDisplayMetrics();
-            resources.updateConfiguration(configuration, dm);
-        //}
+        // updateConfiguration
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        resources.updateConfiguration(configuration, dm);
     }
 
 
@@ -86,11 +84,11 @@ public class AppLanguageUtils {
 
 
     public static Context attachBaseContext(Context context, String language) {
-        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        //    return updateResources(context, language);
-        //} else {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return updateResources(context, language);
+        } else {
             return context;
-        //}
+        }
     }
 
 
@@ -101,9 +99,6 @@ public class AppLanguageUtils {
 
    		Configuration configuration = resources.getConfiguration();
    		configuration.setLocale(locale);
-        // updateConfiguration
-        //DisplayMetrics dm = resources.getDisplayMetrics();
-        //resources.updateConfiguration(configuration, dm);
    		return context.createConfigurationContext(configuration);
    	}
 }

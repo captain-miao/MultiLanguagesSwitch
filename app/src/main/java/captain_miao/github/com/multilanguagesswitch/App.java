@@ -15,16 +15,29 @@ import captain_miao.github.com.multilanguagesswitch.utils.AppLanguageUtils;
 
 public class App extends Application {
 
+    private static App sInstances;
+    private static Context sContext;
+
+    public static App getInstances() {
+        return sInstances;
+    }
+
+    public static Context getContext() {
+        return sContext;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+        sInstances = this;
+        sContext = this;
         onLanguageChange();
     }
 
-//    @Override
-//    protected void attachBaseContext(Context base) {
-//        super.attachBaseContext(AppLanguageUtils.attachBaseContext(base, getAppLanguage(base)));
-//    }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(AppLanguageUtils.attachBaseContext(base, getAppLanguage(base)));
+    }
 
     /**
      * Handling Configuration Changes

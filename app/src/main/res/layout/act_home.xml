@@ -11,28 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="16dp">
-    </TextView>
+        android:padding="16dp"/>
     <TextView
         android:id="@+id/tv_content2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="16dp">
-    </TextView>
-    <TextView
-        android:id="@+id/tv_content3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="16dp">
-    </TextView>
-    <CheckBox
-        android:id="@+id/cb_content4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="16dp">
-    </CheckBox>
+        android:padding="16dp"/>
 </LinearLayout>
 
