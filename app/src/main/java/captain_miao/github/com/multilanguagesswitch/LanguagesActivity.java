@@ -7,11 +7,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceFragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import captain_miao.github.com.multilanguagesswitch.utils.AppLanguageUtils;
 
 public class LanguagesActivity extends AppCompatActivity {
@@ -36,7 +36,7 @@ public class LanguagesActivity extends AppCompatActivity {
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(AppLanguageUtils.attachBaseContext(newBase, newBase.getString(R.string.app_language_pref_key)));
+        super.attachBaseContext(AppLanguageUtils.attachBaseContext(newBase, App.getInstances().getAppLanguage(newBase)));
     }
 
     @Override
@@ -82,6 +82,8 @@ public class LanguagesActivity extends AppCompatActivity {
                     CharSequence language = preference.getValue();
                     if (!TextUtils.isEmpty(language)) {
                         onChangeAppLanguage(language.toString());
+
+                        sharedPreferences.edit().putString(getString(R.string.app_language_pref_key), language.toString()).commit();
                     }
                 }
             }

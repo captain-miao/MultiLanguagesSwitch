@@ -4,11 +4,11 @@ package captain_miao.github.com.multilanguagesswitch;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import captain_miao.github.com.multilanguagesswitch.utils.AppLanguageUtils;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -23,18 +23,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             actionBar.setTitle(R.string.pref_setting_customize);
         }
 
-        TextView textView1 = (TextView) findViewById(R.id.tv_content1);
-        textView1.setText(R.string.pref_setting_customize);
+        TextView textView1 = findViewById(R.id.tv_content1);
+        textView1.setText(R.string.pref_setting_customize);// 默认语言
         textView1.setOnClickListener(this);
 
-        TextView textView2 = (TextView) findViewById(R.id.tv_content2);
-        textView2.setText(getApplication().getString(R.string.pref_setting_customize));
+        TextView textView2 = findViewById(R.id.tv_content2);
+        textView2.setText(getApplication().getString(R.string.pref_setting_customize)); // 设置的语言
         textView2.setOnClickListener(this);
     }
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(AppLanguageUtils.attachBaseContext(newBase, newBase.getString(R.string.app_language_pref_key)));
+        super.attachBaseContext(AppLanguageUtils.attachBaseContext(newBase, App.getInstances().getAppLanguage(newBase)));
     }
 
     @Override

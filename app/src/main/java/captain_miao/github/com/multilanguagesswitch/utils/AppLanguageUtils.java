@@ -21,7 +21,7 @@ import captain_miao.github.com.multilanguagesswitch.constants.ConstantLanguages;
 
 public class AppLanguageUtils {
 
-    private static HashMap<String, Locale> mAllLanguages = new HashMap<String, Locale>(7) {{
+    public static HashMap<String, Locale> mAllLanguages = new HashMap<String, Locale>(7) {{
         put(ConstantLanguages.ENGLISH, Locale.ENGLISH);
         put(ConstantLanguages.SIMPLIFIED_CHINESE, Locale.SIMPLIFIED_CHINESE);
         put(ConstantLanguages.TRADITIONAL_CHINESE, Locale.TRADITIONAL_CHINESE);
@@ -82,10 +82,19 @@ public class AppLanguageUtils {
         }
         return Locale.ENGLISH;
     }
+    public static String getLocaleByLanguage() {
+        Locale locale = Locale.getDefault();
+        for (String key : mAllLanguages.keySet()) {
+            if (TextUtils.equals(mAllLanguages.get(key).getLanguage(), locale.getLanguage())) {
+                return locale.getLanguage();
+            }
+        }
+        return ConstantLanguages.ENGLISH;
+    }
 
 
     public static Context attachBaseContext(Context context, String language) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        if (!TextUtils.isEmpty(language) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             return updateResources(context, language);
         } else {
             return context;
