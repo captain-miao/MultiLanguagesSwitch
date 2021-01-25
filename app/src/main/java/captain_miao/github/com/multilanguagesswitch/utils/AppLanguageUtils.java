@@ -97,6 +97,7 @@ public class AppLanguageUtils {
         if (!TextUtils.isEmpty(language) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             return updateResources(context, language);
         } else {
+            changeAppLanguage(context, language);
             return context;
         }
     }

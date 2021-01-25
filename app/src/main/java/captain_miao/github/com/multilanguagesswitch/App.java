@@ -35,7 +35,6 @@ public class App extends Application {
         super.onCreate();
         sInstances = this;
         sContext = this;
-        onLanguageChange();
     }
 
     @Override
@@ -70,7 +69,7 @@ public class App extends Application {
             // 读取默认语言
             Locale locale = Locale.getDefault();
             for (String key : AppLanguageUtils.mAllLanguages.keySet()) {
-                if (TextUtils.equals(AppLanguageUtils.mAllLanguages.get(key).getLanguage(), locale.getLanguage())) {
+                if (AppLanguageUtils.mAllLanguages.get(key) != null && TextUtils.equals(AppLanguageUtils.mAllLanguages.get(key).getLanguage(), locale.getLanguage())) {
                     curLanguage = locale.getLanguage();
                     break;
                 }

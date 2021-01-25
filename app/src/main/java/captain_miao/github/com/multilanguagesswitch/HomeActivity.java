@@ -24,11 +24,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         TextView textView1 = findViewById(R.id.tv_content1);
-        textView1.setText(R.string.pref_setting_customize);// 默认语言
+        textView1.setText(getString(R.string.pref_setting_customize));// 默认语言
         textView1.setOnClickListener(this);
 
         TextView textView2 = findViewById(R.id.tv_content2);
-        textView2.setText(getApplication().getString(R.string.pref_setting_customize)); // 设置的语言
+        textView2.setText(App.getInstances().getString(R.string.pref_setting_customize)); // 设置的语言
         textView2.setOnClickListener(this);
     }
 
@@ -41,12 +41,21 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == CHANGE_LANGUAGE_REQUEST_CODE) {
-            recreate();
+            reload();
         }
     }
 
     @Override
     public void onClick(View v) {
         startActivityForResult(new Intent(HomeActivity.this, LanguagesActivity.class), CHANGE_LANGUAGE_REQUEST_CODE);
+    }
+
+    public void reload() {
+        Intent intent = getIntent();
+        overridePendingTransition(0, 0);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(intent);
     }
 }

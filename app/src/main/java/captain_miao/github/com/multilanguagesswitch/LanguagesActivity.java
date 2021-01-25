@@ -1,8 +1,10 @@
 package captain_miao.github.com.multilanguagesswitch;
 
 
+import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -90,9 +92,17 @@ public class LanguagesActivity extends AppCompatActivity {
         };
 
         private void onChangeAppLanguage(String newLanguage) {
-            AppLanguageUtils.changeAppLanguage(getActivity(), newLanguage);
             AppLanguageUtils.changeAppLanguage(App.getContext(), newLanguage);
-            getActivity().recreate();
+            LanguagesActivity.reload(getActivity());
         }
+    }
+
+    public static void reload(Activity act) {
+        Intent intent = act.getIntent();
+        act.overridePendingTransition(0, 0);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        act.finish();
+        act.overridePendingTransition(0, 0);
+        act.startActivity(intent);
     }
 }
